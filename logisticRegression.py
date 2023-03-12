@@ -25,10 +25,19 @@ def build_model():
     recall = recall_score(y_test, y_pred, average='macro')
     f1 = f1_score(y_test, y_pred, average='macro')
     confusionMatrix = confusion_matrix(y_test, y_pred)
+
+    print('Accuracy: ', accuracy)
+    print('Precision: ', precision)
+    print('Recall: ', recall)
+    print('F1 Score: ', f1)
+    print('Confusion Matrix: ', confusionMatrix)
     
-    return {'accuracy': accuracy, 
+    measures = { 'accuracy': accuracy, 
             'precision': precision, 
             'recall': recall, 
             'f1_score': f1, 
             'confusion_matrix': confusionMatrix.tolist()
             }
+    
+    return [ model, measures ]
+

@@ -4,9 +4,11 @@ from logisticRegression import *
 
 app = Flask(__name__)
 
+model = ""
+
 @app.route('/')
 def Home():
-    return "Flask application"
+    return jsonify("Flask application")
 
 @app.route('/getip')
 def GetIP():
@@ -16,4 +18,6 @@ def GetIP():
 
 @app.route('/build-model')
 def BuildModel():
-    return jsonify(build_model())
+    global model 
+    model, measures = build_model()
+    return jsonify(measures)
