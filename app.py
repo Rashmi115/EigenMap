@@ -1,10 +1,9 @@
 from flask import Flask, jsonify
 import socket
 from logisticRegression import *
+from cnn import *
 
 app = Flask(__name__)
-
-model = ""
 
 @app.route('/')
 def Home():
@@ -18,6 +17,10 @@ def GetIP():
 
 @app.route('/build-model')
 def BuildModel():
-    global model 
     model, measures = build_model()
+    return jsonify(measures)
+
+@app.route('/build-cnn')
+def BuildCNN():
+    cnn_model, measures = build_cnn()
     return jsonify(measures)
