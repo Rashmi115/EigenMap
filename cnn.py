@@ -6,7 +6,6 @@ from keras.utils import to_categorical
 import tensorflow as tf
 from sklearn.metrics import classification_report, precision_recall_fscore_support
 import numpy as np
-import json
 
 def build_cnn():
     # Load the MNIST dataset
